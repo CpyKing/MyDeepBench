@@ -75,7 +75,7 @@ int time_gemm(Tensor<T1> A, Tensor<T1> B, Tensor<T2> C, bool a_t, bool b_t, cubl
     int k = a_t ? A.dims()[0] : A.dims()[1];
     int n = C.dims()[1];
 
-    int numRepeats = 400;
+    int numRepeats = 30;
     cublasStatus_t stat;
 
 #if (__CUDACC_VER_MAJOR__ >= 8)
@@ -189,10 +189,12 @@ int main(int argc, char **argv) {
     cudaFree(0);
 
     int inference = 0;
-    if (argc > 1) {
+    if (argc > 2) {
         std::string inf = "inference";
-        inference = argv[1] == inf ? 1 : 0;
+        inference = argv[2] == inf ? 1 : 0;
     }
+
+    
 
 #if (__CUDACC_VER_MAJOR__ >= 8)
     std::string precision;
@@ -203,8 +205,8 @@ int main(int argc, char **argv) {
 #else
     std::string precision = "float";
 #endif
-    if (argc > 2) {
-        precision = argv[2];
+    if (argc > 3) {
+        precision = argv[3];
     }
 
     cublasHandle_t cublas_handle;
@@ -247,7 +249,17 @@ int main(int argc, char **argv) {
 
     int pad_kernels_count = 0;
 
+    int my_cnt = 0;
     for (const auto &problem : (inference ? inference_server_set : training_set)) {
+        if (argv[1] != std::to_string(my_cnt)) {
+            my_cnt++;
+	    // std::cout << my_cnt << std::endl;
+	    continue;
+        }
+	else {
+	    // std::cout << my_cnt << std::endl;
+	    my_cnt++;
+	}
         int m, n, k;
         bool a_t, b_t;
         std::tie(m, n, k, a_t, b_t) = problem;

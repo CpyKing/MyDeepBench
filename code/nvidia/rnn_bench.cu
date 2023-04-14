@@ -288,7 +288,7 @@ std::tuple<int, int, int> time_rnn(int hidden_size,
     auto dcx = rand<T>({hidden_size, batch_size}, curand_gen);
     auto dcy = rand<T>({hidden_size, batch_size}, curand_gen);
 
-    int numRepeats = 100;
+    int numRepeats = 30;
 
     //Warm up
     rnn.forward(x, hx, cx, y, hy, cy);
