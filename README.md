@@ -1,6 +1,7 @@
 ![Baidu Logo](/doc/baidu-research-logo-small.png)
 
 
+
 - [DeepBench](#deepbench)
 - [Types of Operations](#types-of-operations)
 - [Training Benchmark](#training-benchmark)
