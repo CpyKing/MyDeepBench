@@ -95,9 +95,13 @@ std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
     std::make_tuple(7, 7, 512, 16, 512, 3, 3, 1, 1, 1, 1),
     std::make_tuple(7, 7, 512, 16, 2048, 1, 1, 0, 0, 1, 1),
     std::make_tuple(14, 14, 1024, 16, 2048, 1, 1, 0, 0, 2, 2),
-    std::make_tuple(7, 7, 2048, 16, 512, 1, 1, 0, 0, 1, 1),
+    std::make_tuple(7, 7, 2048, 16, 512, 1, 1, 0, 0, 1, 1)
+};
 
 // Vector saves w, h, c, n, k, filter_w(s), filter_h(r), pad_w, pad_h, wstride, hstride
+std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
+                       unsigned int, unsigned int, unsigned int,
+                       unsigned int, unsigned int, unsigned int, unsigned int>> inference_server_set = {
     std::make_tuple(700, 161, 1, 1, 32, 20, 5, 0, 0, 2, 2),
     std::make_tuple(700, 161, 1, 2, 32, 20, 5, 0, 0, 2, 2),
     std::make_tuple(700, 161, 1, 4, 32, 20, 5, 0, 0, 2, 2),
@@ -204,9 +208,14 @@ std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
     std::make_tuple(7, 7, 512, 2, 512, 3, 3, 1, 1, 1, 1),
     std::make_tuple(7, 7, 512, 2, 2048, 1, 1, 0, 0, 1, 1),
     std::make_tuple(14, 14, 1024, 2, 2048, 1, 1, 0, 0, 2, 2),
-    std::make_tuple(7, 7, 2048, 2, 512, 1, 1, 0, 0, 1, 1),
+    std::make_tuple(7, 7, 2048, 2, 512, 1, 1, 0, 0, 1, 1)
+};
 
 // Vector saves w, h, c, n, k, filter_w(s), filter_h(r), pad_w, pad_h, wstride, hstride
+std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
+                       unsigned int, unsigned int, unsigned int,
+                       unsigned int, unsigned int, unsigned int, unsigned int>> inference_device_set = {
+    //std::make_tuple(151, 40, 1, 1, 32, 20, 5, 8, 8, 8, 2),  ARM convolution seg faults with this kernel
     std::make_tuple(112, 112, 64, 1, 64, 1, 1, 0, 0, 1, 1),
     std::make_tuple(56, 56, 64, 1, 256, 1, 1, 0, 0, 1, 1),
     std::make_tuple(56, 56, 256, 1, 64, 1, 1, 0, 0, 1, 1),
@@ -225,10 +234,3 @@ std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
     std::make_tuple(7, 7, 2048, 1, 512, 1, 1, 0, 0, 1, 1)
 };
 
-std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
-                       unsigned int, unsigned int, unsigned int,
-                       unsigned int, unsigned int, unsigned int, unsigned int>> inference_server_set = {};
-
-std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
-                       unsigned int, unsigned int, unsigned int,
-                       unsigned int, unsigned int, unsigned int, unsigned int>> inference_device_set = {};
